@@ -6,9 +6,9 @@ let money = prompt("Ваш бюджет на месяц?"),
         budget: money,
         timeData: time,
         expenses: {},
-        optionalExpenses: undefined,
-        income : undefined,
-        savings : true
+        optionalExpenses: {},
+        income : [],
+        savings : false
 }
 
 let expenseOne = prompt('Введите обязательную статью расходов в этом месяце');
