@@ -1,10 +1,7 @@
 'use strict';
 
 let num = "33721";
-
 let arr = num.split("");
-
-console.log(arr);
 
 let i,
     summ = 1;
