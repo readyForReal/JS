@@ -1,18 +1,14 @@
 'use strict';
 
-let num = "33721";
+let num = "33721",
+    arr = num.split(""),
+    sum = 1;
 
-let arr = num.split("");
+arr.forEach(function(item, i, arr) {
+    sum = sum * parseInt(arr[i]);
+    return sum;
+});
 
-console.log(arr);
+sum = sum  ** 3;
 
-let i,
-    summ = 1;
-for (i = 0; i < arr.length; i++) { 
-    summ = summ * parseInt(arr[i]);
-}
-
-summ = summ  ** 3;
-summ = summ.toString();
-
-alert(summ.slice(0, 3));
+alert(sum.toString().slice(0, 3));
