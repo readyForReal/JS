@@ -1,5 +1,7 @@
 'use strict';
 
+'use strict';
+
 let daysInMonth = 30,
     maxSymbols = 50,
     lowDailyBudget = 10,
@@ -18,18 +20,15 @@ let daysInMonth = 30,
 
 //                                      Using for loop
 
-for (let i = 0; i < 2; i++) {
-    let a,
-        b;
-    while (true) {
-        a = prompt('Введите обязательную статью расходов в этом месяце', '');
-        if ( (typeof(a)) === "string" && (typeof(a)) != null && a != ''
-         && a.length < maxSymbols) {
-            break;
-        } else {
-            alert("ERROR, please input a string, max 50 symbol's", '');
-        }
+while (true) {
+    a = prompt('Введите обязательную статью расходов в этом месяце', '');
+    if ( (typeof(a)) === "string" && (typeof(a)) != null && a != ''
+        && a.length < maxSymbols) {
+        break;
+    } else {
+        alert("ERROR, please input a string, max 50 symbol's", '');
     }
+}
     while (true) {
         b = +prompt('Во сколько обойдется?', '');
         if ( Number.isNaN(b) != true && (typeof(b)) === "number" && (typeof(b)) != null && b != '') {
@@ -123,7 +122,3 @@ if (appData.moneyPerDay < lowDailyBudget) {
 } else {
     console.log("ERROR!")
 }
-
-
-
-

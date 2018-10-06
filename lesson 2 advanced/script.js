@@ -9,19 +9,17 @@ let week = [
     parent = document.getElementById("demo");
 
 for (let i = 0; i < week.length; i++) {
+    let child = document.createElement("p");
+
     if ( week[i] === today) {
-        let child = document.createElement("p");
-        child.innerHTML = week[i].italics();
-        parent.appendChild(child);
-    } else if ( week[i] === "Saturday" || week[i] === "Sunday") {
-        let child = document.createElement("p");
-        child.innerHTML = week[i].bold();
-        parent.appendChild(child);
-    } else {
-        let child = document.createElement("p");
-        child.innerHTML = week[i];
-        parent.appendChild(child);
+        child.style.fontStyle = 'italic';
     }
+    if ( week[i] === "Saturday" || week[i] === "Sunday") {
+        child.style.fontWeight = 'bold';
+    }
+
+    child.innerHTML = week[i];
+    parent.appendChild(child);
 }
 
 //                                      2.2
@@ -31,9 +29,7 @@ let arr = [
 ];
 
 for (let i = 0; i < arr.length; i++) {
-    if (arr[i].startsWith("3")) {
-        console.log(arr[i]);
-    } else if (arr[i].startsWith("7")) {
+    if (arr[i].startsWith("3") || arr[i].startsWith("7")) {
         console.log(arr[i]);
     }
 }
