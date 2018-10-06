@@ -20,7 +20,7 @@ let daysInMonth = 30,
 
 //                                      Using for loop
 
-for (let i = 0; i < 3; i++) {
+for (let i = 0; i < 2; i++) {
     let a = prompt('Введите обязательную статью расходов в этом месяце', ''),
         b = +prompt('Во сколько обойдется?', '');
 
@@ -30,10 +30,10 @@ for (let i = 0; i < 3; i++) {
     && a.length < maxSymbols && Number.isNaN(b) != true 
     && (typeof(b)) === "number" && (typeof(b)) != null && b != '') {
         appData.expenses[a] = b;
-        i++;
         console.log("SUCCESS: appData has a new key : value !");
     } else {
         i--;
+        alert("ERROR: bad user input, try again");
         console.log("ERROR: bad user input");
     }
 
@@ -57,6 +57,7 @@ for (let i = 0; i < 3; i++) {
 //         i++;
 //         console.log("SUCCESS: appData has a new key : value !");
 //     } else {
+//         alert("ERROR: bad user input, try again");
 //         console.log("ERROR: bad user input");
 //     }
 
@@ -80,6 +81,7 @@ for (let i = 0; i < 3; i++) {
 //         i++;
 //         console.log("SUCCESS: appData has a new key : value !");
 //     } else {
+//         alert("ERROR: bad user input, try again");
 //         console.log("ERROR: bad user input");
 //     }
 
