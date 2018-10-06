@@ -20,24 +20,22 @@ let daysInMonth = 30,
 
 //                                      Using for loop
 
-while (true) {
-    a = prompt('Введите обязательную статью расходов в этом месяце', '');
-    if ( (typeof(a)) === "string" && (typeof(a)) != null && a != ''
-        && a.length < maxSymbols) {
-        break;
-    } else {
-        alert("ERROR, please input a string, max 50 symbol's", '');
-    }
-}
-    while (true) {
+for (let i = 0; i < 3; i++) {
+    let a = prompt('Введите обязательную статью расходов в этом месяце', ''),
         b = +prompt('Во сколько обойдется?', '');
-        if ( Number.isNaN(b) != true && (typeof(b)) === "number" && (typeof(b)) != null && b != '') {
-            break;
-        } else {
-            alert("ERROR, please input a number", '');
-        }
+
+    console.log("going in i is : " + i);
+
+    if ( (typeof(a)) === "string" && (typeof(a)) != null && a != ''
+    && a.length < maxSymbols && Number.isNaN(b) != true 
+    && (typeof(b)) === "number" && (typeof(b)) != null && b != '') {
+        appData.expenses[a] = b;
+        i++;
+    } else {
+        i--;
     }
-    appData.expenses[a] = b;
+
+    console.log("going out i is : " + i);
 };
 
 //                                      Using while loop
