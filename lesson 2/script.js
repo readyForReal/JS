@@ -31,8 +31,10 @@ for (let i = 0; i < 3; i++) {
     && (typeof(b)) === "number" && (typeof(b)) != null && b != '') {
         appData.expenses[a] = b;
         i++;
+        console.log("SUCCESS: appData has a new key : value !");
     } else {
         i--;
+        console.log("ERROR: bad user input");
     }
 
     console.log("going out i is : " + i);
@@ -40,71 +42,49 @@ for (let i = 0; i < 3; i++) {
 
 //                                      Using while loop
 
-// let counter = 1;
+// let i = 0;
 
-// while (true) {
-//     let a,
-//         b;
-//     while (true) {
-//         a = prompt('Введите обязательную статью расходов в этом месяце', '');
-//         if ( (typeof(a)) === "string" && (typeof(a)) != null && a != ''
-//          && a.length < maxSymbols) {
-//             break;
-//         } else {
-//             alert("ERROR, please input a string, max 50 symbol's", '');
-//         }
-//     }
-//     while (true) {
+// while (i < 2) {
+//     let a = prompt('Введите обязательную статью расходов в этом месяце', ''),
 //         b = +prompt('Во сколько обойдется?', '');
-//         if ( Number.isNaN(b) != true && (typeof(b)) === "number" && (typeof(b)) != null && b != '') {
-//             break;
-//         } else {
-//             alert("ERROR, please input a number", '');
-//         }
-//     }
 
-//     appData.expenses[a] = b;
+//     console.log("going in i is : " + i);
 
-//     if (counter == 2) {
-//         break;
+//     if ( (typeof(a)) === "string" && (typeof(a)) != null && a != ''
+//     && a.length < maxSymbols && Number.isNaN(b) != true 
+//     && (typeof(b)) === "number" && (typeof(b)) != null && b != '') {
+//         appData.expenses[a] = b;
+//         i++;
+//         console.log("SUCCESS: appData has a new key : value !");
 //     } else {
-//         counter++;
+//         console.log("ERROR: bad user input");
 //     }
+
+//     console.log("going out i is : " + i);
 // };
 
 //                                      Using do while loop
 
-// let counter = 1;
+// let i = 0;
 
 // do {
-//     let a,
-//         b;
-//     while (true) {
-//         a = prompt('Введите обязательную статью расходов в этом месяце', '');
-//         if ( (typeof(a)) === "string" && (typeof(a)) != null && a != ''
-//          && a.length < maxSymbols) {
-//             break;
-//         } else {
-//             alert("ERROR, please input a string, max 50 symbol's", '');
-//         }
-//     }
-//     while (true) {
+//     let a = prompt('Введите обязательную статью расходов в этом месяце', ''),
 //         b = +prompt('Во сколько обойдется?', '');
-//         if ( Number.isNaN(b) != true && (typeof(b)) === "number" && (typeof(b)) != null && b != '') {
-//             break;
-//         } else {
-//             alert("ERROR, please input a number", '');
-//         }
-//     }
 
-//     appData.expenses[a] = b;
+//     console.log("going in i is : " + i);
 
-//     if (counter == 2) {
-//         break;
+//     if ( (typeof(a)) === "string" && (typeof(a)) != null && a != ''
+//     && a.length < maxSymbols && Number.isNaN(b) != true 
+//     && (typeof(b)) === "number" && (typeof(b)) != null && b != '') {
+//         appData.expenses[a] = b;
+//         i++;
+//         console.log("SUCCESS: appData has a new key : value !");
 //     } else {
-//         counter++;
+//         console.log("ERROR: bad user input");
 //     }
-// } while (counter < 3);
+
+//     console.log("going out i is : " + i);
+// } while (i < 2);
 
 console.log(appData);
 
