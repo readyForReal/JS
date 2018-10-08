@@ -66,7 +66,7 @@ chooseExpences();
 //                          Daily budget
 
 appData.moneyPerDay = appData.budget / 30;
-alert(strDailyBudget + appData.moneyPerDay);
+alert(strDailyBudget + appData.moneyPerDay.toFixed(1));
 
 if (appData.moneyPerDay < lowDailyBudget) {
     console.log(strLowWealth);
