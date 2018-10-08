@@ -1,12 +1,23 @@
 'use strict';
 
+let money, time;
+
+function start = () {
+    money = +prompt("Ваш бюджет на месяц?"),
+    time = prompt("Введите дату в формате YYYY-MM-DD");
+
+    while (isNan(money) || money == "" || money == null) {
+        money = +prompt("Ваш бюджет на месяц?", "");
+    }
+}
+
+start();
+
 let daysInMonth = 30,
     maxSymbols = 50,
     lowDailyBudget = 10,
     midDailyBudget = 50,
     highDailyBudget = 100,
-    money = +prompt("Ваш бюджет на месяц?"),
-    time = prompt("Введите дату в формате YYYY-MM-DD"),
     appData = {
         budget: money,
         timeData: time,
