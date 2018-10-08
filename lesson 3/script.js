@@ -1,5 +1,7 @@
 'use strict';
 
+//                          Variable's
+
 let money, 
     time,
     daysInMonth = 30,
@@ -15,10 +17,12 @@ let money,
     askSavingsPercent = "What is your saving's percent :",
     strDailyBudget = "Your daily budget is: ",
     strLowWealth = "Minimum level of wealth",
-    strMidWealt = "Average level of wealth",
+    strMidWealth = "Average level of wealth",
     strHighWealth = "High level of wealth",
     strError = "E R R O R !",
     strMonthlyDepositIncome = "Your monthly deposit income is : ";
+
+//                          Budget function
 
 function start() {
     money = +prompt(askBudget),
@@ -28,8 +32,9 @@ function start() {
         money = +prompt(askBudget, "");
     }
 }
-
 start();
+
+//                          Main Object
 
 let appData = {
     budget: money,
@@ -37,8 +42,10 @@ let appData = {
     expenses: {},
     optionalExpenses: {},
     income : [],
-    savings : false
+    savings : true
 };
+
+//                          Expences function 
 
 function chooseExpences() {      
     for (let i = 0; i < 2; i++) {
@@ -54,8 +61,9 @@ function chooseExpences() {
         }
     };
 }
-
 chooseExpences();
+
+//                          Daily budget
 
 appData.moneyPerDay = appData.budget / 30;
 alert(strDailyBudget + appData.moneyPerDay);
@@ -70,6 +78,8 @@ if (appData.moneyPerDay < lowDailyBudget) {
     console.log(strError);
 }
 
+//                          Savings function
+
 function checkSavings() {
     if (appData.savings == true) {
         let save = +prompt(askSavings),
@@ -79,7 +89,8 @@ function checkSavings() {
         alert(strMonthlyDepositIncome + appData.monthlyIncome);
     }
 }
-
 checkSavings();
+
+//                          Place holder
 
 console.log(appData);
