@@ -1,113 +1,85 @@
 'use strict';
 
-let money, time;
+let money, 
+    time,
+    daysInMonth = 30,
+    maxSymbols = 50,
+    lowDailyBudget = 10,
+    midDailyBudget = 50,
+    highDailyBudget = 100,
+    askBudget ="What is your monthly budget ?",
+    askTime = "Input date in YYYY-MM-DD format",
+    askExpences = 'Input your Expence',
+    askExpencesCost = 'What is the cost of that expence',
+    askSavings = "What are your monthly saving's",
+    askSavingsPercent = "What is your saving's percent :",
+    strDailyBudget = "Your daily budget is: ",
+    strLowWealth = "Minimum level of wealth",
+    strMidWealt = "Average level of wealth",
+    strHighWealth = "High level of wealth",
+    strError = "E R R O R !",
+    strMonthlyDepositIncome = "Your monthly deposit income is : ";
 
-function start = () {
-    money = +prompt("Ваш бюджет на месяц?"),
-    time = prompt("Введите дату в формате YYYY-MM-DD");
+function start() {
+    money = +prompt(askBudget),
+    time = prompt(askTime);
 
-    while (isNan(money) || money == "" || money == null) {
-        money = +prompt("Ваш бюджет на месяц?", "");
+    while (isNaN(money) || money == "" || money == null) {
+        money = +prompt(askBudget, "");
     }
 }
 
 start();
 
-let daysInMonth = 30,
-    maxSymbols = 50,
-    lowDailyBudget = 10,
-    midDailyBudget = 50,
-    highDailyBudget = 100,
-    appData = {
-        budget: money,
-        timeData: time,
-        expenses: {},
-        optionalExpenses: {},
-        income : [],
-        savings : false
-    };
-
-//                                      Using for loop
-
-for (let i = 0; i < 2; i++) {
-    let a = prompt('Введите обязательную статью расходов в этом месяце', ''),
-        b = +prompt('Во сколько обойдется?', '');
-
-    console.log("going in i is : " + i);
-
-    if ( (typeof(a)) === "string" && (typeof(a)) != null && a != ''
-    && a.length < maxSymbols && Number.isNaN(b) != true 
-    && (typeof(b)) === "number" && (typeof(b)) != null && b != '') {
-        appData.expenses[a] = b;
-        console.log("SUCCESS: appData has a new key : value !");
-    } else {
-        i--;
-        alert("ERROR: bad user input, try again");
-        console.log("ERROR: bad user input");
-    }
-
-    console.log("going out i is : " + i);
+let appData = {
+    budget: money,
+    timeData: time,
+    expenses: {},
+    optionalExpenses: {},
+    income : [],
+    savings : false
 };
 
-//                                      Using while loop
+function chooseExpences() {      
+    for (let i = 0; i < 2; i++) {
+        let a = prompt(askExpences, ''),
+            b = +prompt(askExpencesCost, '');
 
-// let i = 0;
+        if ( (typeof(a)) === "string" && (typeof(a)) != null && a != ''
+        && a.length < maxSymbols && Number.isNaN(b) != true 
+        && (typeof(b)) === "number" && (typeof(b)) != null && b != '') {
+            appData.expenses[a] = b;
+        } else {
+            i--;
+        }
+    };
+}
 
-// while (i < 2) {
-//     let a = prompt('Введите обязательную статью расходов в этом месяце', ''),
-//         b = +prompt('Во сколько обойдется?', '');
-
-//     console.log("going in i is : " + i);
-
-//     if ( (typeof(a)) === "string" && (typeof(a)) != null && a != ''
-//     && a.length < maxSymbols && Number.isNaN(b) != true 
-//     && (typeof(b)) === "number" && (typeof(b)) != null && b != '') {
-//         appData.expenses[a] = b;
-//         i++;
-//         console.log("SUCCESS: appData has a new key : value !");
-//     } else {
-//         alert("ERROR: bad user input, try again");
-//         console.log("ERROR: bad user input");
-//     }
-
-//     console.log("going out i is : " + i);
-// };
-
-//                                      Using do while loop
-
-// let i = 0;
-
-// do {
-//     let a = prompt('Введите обязательную статью расходов в этом месяце', ''),
-//         b = +prompt('Во сколько обойдется?', '');
-
-//     console.log("going in i is : " + i);
-
-//     if ( (typeof(a)) === "string" && (typeof(a)) != null && a != ''
-//     && a.length < maxSymbols && Number.isNaN(b) != true 
-//     && (typeof(b)) === "number" && (typeof(b)) != null && b != '') {
-//         appData.expenses[a] = b;
-//         i++;
-//         console.log("SUCCESS: appData has a new key : value !");
-//     } else {
-//         alert("ERROR: bad user input, try again");
-//         console.log("ERROR: bad user input");
-//     }
-
-//     console.log("going out i is : " + i);
-// } while (i < 2);
-
-console.log(appData);
+chooseExpences();
 
 appData.moneyPerDay = appData.budget / 30;
-alert("Your daily budget is: " + appData.moneyPerDay);
+alert(strDailyBudget + appData.moneyPerDay);
 
 if (appData.moneyPerDay < lowDailyBudget) {
-    console.log("Minimum level of wealth");
+    console.log(strLowWealth);
 } else if (appData.moneyPerDay > lowDailyBudget && appData.moneyPerDay < highDailyBudget) {
-    console.log("Average level of wealth");
+    console.log(strMidWealth);
 } else if (appData.moneyPerDay > highDailyBudget) {
-    console.log("High level of wealth");
+    console.log(strHighWealth);
 } else {
-    console.log("ERROR!")
+    console.log(strError);
 }
+
+function checkSavings() {
+    if (appData.savings == true) {
+        let save = +prompt(askSavings),
+            percent = +prompt(askSavingsPercent);
+
+        appData.monthlyIncome = save/100/12*percent;
+        alert(strMonthlyDepositIncome + appData.monthlyIncome);
+    }
+}
+
+checkSavings();
+
+console.log(appData);
