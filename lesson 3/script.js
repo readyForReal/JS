@@ -11,26 +11,52 @@ let money,
     highDailyBudget = 100,
     askBudget ="What is your monthly budget ?",
     askTime = "Input date in YYYY-MM-DD format",
-    askExpences = 'Input your Expence',
+    askExpences = 'Input your expence',
     askExpencesCost = 'What is the cost of that expence',
     askSavings = "What are your monthly saving's",
     askSavingsPercent = "What is your saving's percent :",
+    askOptExpences = "Input optional expence",
     strDailyBudget = "Your daily budget is: ",
     strLowWealth = "Minimum level of wealth",
     strMidWealth = "Average level of wealth",
     strHighWealth = "High level of wealth",
-    strError = "E R R O R !",
-    strMonthlyDepositIncome = "Your monthly deposit income is : ";
+    strMonthlyDepositIncome = "Your monthly deposit income is : ",
+    err = "E R R O R !",
+    errStr = "Input a string",
+    errNum = "Input a number";
+
+//                          Check if number function
+
+function isNum(num, err) {
+    if (isNaN(num) || num == "" || num == null) {
+        alert(err);
+        return true;
+    } else {
+        return false;
+    }
+}
+
+//                          Check if string function
+
+function isStr(str, err) {
+    if (!isNaN(str) || str == "" || str == null || str.length > maxSymbols) {
+        alert(err);
+        return true;
+    } else {
+        return false;
+    }
+}
 
 //                          Budget function
 
 function start() {
-    money = +prompt(askBudget),
-    time = prompt(askTime);
+    money = +prompt(askBudget);
 
-    while (isNaN(money) || money == "" || money == null) {
+    while (isNum(money, errNum)) {
         money = +prompt(askBudget, "");
     }
+
+    // time = prompt(askTime);
 }
 start();
 
@@ -42,41 +68,65 @@ let appData = {
     expenses: {},
     optionalExpenses: {},
     income : [],
-    savings : true
+    savings : false
 };
 
 //                          Expences function 
 
-function chooseExpences() {      
-    for (let i = 0; i < 2; i++) {
-        let a = prompt(askExpences, ''),
-            b = +prompt(askExpencesCost, '');
+function chooseExpences() {
 
-        if ( (typeof(a)) === "string" && (typeof(a)) != null && a != ''
-        && a.length < maxSymbols && Number.isNaN(b) != true 
-        && (typeof(b)) === "number" && (typeof(b)) != null && b != '') {
-            appData.expenses[a] = b;
-        } else {
-            i--;
-        }
-    };
+    let a = prompt(askExpences, '');
+    while (isStr(a, errStr)) {
+        a = prompt(askExpences, '');
+    }
+
+    let b = +prompt(askExpencesCost, '');
+    while (isNum(b, errNum)) {
+        b = +prompt(askExpencesCost, '');
+    }
+
+    appData.expenses[a] = b;
 }
 chooseExpences();
+chooseExpences();
 
-//                          Daily budget
+//                          Optional Expences function 
 
-appData.moneyPerDay = appData.budget / 30;
-alert(strDailyBudget + appData.moneyPerDay.toFixed(1));
+function chooseOptExpences(i) {
+    let a = prompt(askOptExpences, '');
 
-if (appData.moneyPerDay < lowDailyBudget) {
-    console.log(strLowWealth);
-} else if (appData.moneyPerDay > lowDailyBudget && appData.moneyPerDay < highDailyBudget) {
-    console.log(strMidWealth);
-} else if (appData.moneyPerDay > highDailyBudget) {
-    console.log(strHighWealth);
-} else {
-    console.log(strError);
+    while (isStr(a, errStr)) {
+        a = prompt(askOptExpences, '');
+    }
+
+    appData.optionalExpenses[i] = a;
 }
+chooseOptExpences(1);
+chooseOptExpences(2);
+chooseOptExpences(3);
+
+//                          Daily budget function
+
+function detectDayBudget() {
+    appData.moneyPerDay = appData.budget / daysInMonth ;
+    alert(strDailyBudget + appData.moneyPerDay.toFixed(1));
+}
+detectDayBudget();
+
+//                          Income Level function
+
+function detectLevel() {
+    if (appData.moneyPerDay < lowDailyBudget) {
+        console.log(strLowWealth);
+    } else if (appData.moneyPerDay > lowDailyBudget && appData.moneyPerDay < highDailyBudget) {
+        console.log(strMidWealth);
+    } else if (appData.moneyPerDay > highDailyBudget) {
+        console.log(strHighWealth);
+    } else {
+        console.log(err);
+    }
+}
+detectLevel();
 
 //                          Savings function
 
