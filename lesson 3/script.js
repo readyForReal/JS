@@ -7,7 +7,6 @@ let money,
     daysInMonth = 30,
     maxSymbols = 50,
     lowDailyBudget = 10,
-    midDailyBudget = 50,
     highDailyBudget = 100,
     askBudget ="What is your monthly budget ?",
     askTime = "Input date in YYYY-MM-DD format",
@@ -116,11 +115,11 @@ detectDayBudget();
 //                          Income Level function
 
 function detectLevel() {
-    if (appData.moneyPerDay < lowDailyBudget) {
+    if (appData.moneyPerDay <= lowDailyBudget) {
         console.log(strLowWealth);
     } else if (appData.moneyPerDay > lowDailyBudget && appData.moneyPerDay < highDailyBudget) {
         console.log(strMidWealth);
-    } else if (appData.moneyPerDay > highDailyBudget) {
+    } else if (appData.moneyPerDay >= highDailyBudget) {
         console.log(strHighWealth);
     } else {
         console.log(err);
