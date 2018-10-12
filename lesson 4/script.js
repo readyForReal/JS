@@ -96,7 +96,7 @@ let appData = {
         while (isStr(str, errStr)) {
          str = prompt(askIncome, '');
         }
-        appData.income = str.split(', ');
+        appData.income.push(appData.income = str.split(','));
         
         let strTwo = prompt(askAddedIncome, '');
         while (isStr(strTwo, errStr)) {
@@ -104,13 +104,10 @@ let appData = {
         }
         appData.income.push(strTwo);
         appData.income.sort();
-        appData.income.unshift('');
-
-        console.log("Способы доп. заработка: ");
-        appData.income.forEach(function(item) {
-            if (item != '') {
-                console.log(item);
-            }
+        
+        document.write("Способы доп. заработка: " + "<br>");
+        appData.income.forEach(function(item, key) {
+            document.write( (key + 1) + " : " + item + "<br>");
         });
 
         console.log("Наша программа включает в себя данные: ");

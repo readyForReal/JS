@@ -78,3 +78,29 @@ if (appData.moneyPerDay < lowDailyBudget) {
     console.log("ERROR!")
 }
 
+// let arr = [];
+// primeNum:
+//   for (var i = 2; i <= 100; i++) {
+//     for (var j = 2; j < i; j++) {
+//       if (i % j == 0) continue primeNum;
+//     }
+//     arr.push(i);
+//   }
+// let str = document.getElementById("demo");
+// str.innerHTML = arr;
+let askIncome = "tell income",
+    askAddedIncome = "more income";
+chooseIncome = function() {
+    parent = document.getElementById("demo");
+    let str = prompt(askIncome, '');
+    arr = str.split(',');
+    
+    let strTwo = prompt(askAddedIncome, '');
+
+    arr.push(strTwo);
+    arr.sort();
+
+    str = document.createElement("p");
+    str.innerHTML = arr;
+    parent.appendChild(str);
+}
