@@ -75,32 +75,25 @@ if (appData.moneyPerDay < lowDailyBudget) {
 } else if (appData.moneyPerDay > highDailyBudget) {
     console.log("High level of wealth");
 } else {
-    console.log("ERROR!")
+    console.log("ERROR!");
 }
 
 // let arr = [];
-// primeNum:
-//   for (var i = 2; i <= 100; i++) {
+// for (var i = 2; i <= 8; i++) {
 //     for (var j = 2; j < i; j++) {
-//       if (i % j == 0) continue primeNum;
+//         console.log(i, j);
 //     }
-//     arr.push(i);
-//   }
+//     arr.push(i)
+// }
+// console.log(arr);
 // let str = document.getElementById("demo");
 // str.innerHTML = arr;
-let askIncome = "tell income",
-    askAddedIncome = "more income";
-chooseIncome = function() {
-    parent = document.getElementById("demo");
-    let str = prompt(askIncome, '');
-    arr = str.split(',');
-    
-    let strTwo = prompt(askAddedIncome, '');
 
-    arr.push(strTwo);
-    arr.sort();
-
-    str = document.createElement("p");
-    str.innerHTML = arr;
-    parent.appendChild(str);
+function primeNum(start, end) {
+    for (start; start <= end; start++) {
+        for (let j = 2; j < start; j++) {
+            console.log(start, j);
+        }
+    }
 }
+primeNum(2, 10);
