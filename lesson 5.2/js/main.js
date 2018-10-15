@@ -39,9 +39,9 @@ let expencesBtn = document.getElementsByTagName('BUTTON')[0],
 // Получить поля для ввода необязательных расходов 
 // (optionalexpenses-item) при помощи querySelectorAll
 
-let optExpenceOne = document.querySelectorAll('.optionalexpenses-item')[0],
-    optExpenceTwo = document.querySelectorAll('.optionalexpenses-item')[1],
-    optExpenceThree = document.querySelectorAll('.optionalexpenses-item')[2];
+let optExpences = document.querySelectorAll('.optionalexpenses-item');
+
+console.log(optExpences);
 
 //                               1.5
 // Получить оставшиеся поля через querySelector 
