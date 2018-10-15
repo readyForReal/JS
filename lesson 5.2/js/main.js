@@ -41,8 +41,6 @@ let expencesBtn = document.getElementsByTagName('BUTTON')[0],
 
 let optExpences = document.querySelectorAll('.optionalexpenses-item');
 
-console.log(optExpences);
-
 //                               1.5
 // Получить оставшиеся поля через querySelector 
 // (статьи возможного дохода, чекбокс, сумма, процент, год, месяц, день)
