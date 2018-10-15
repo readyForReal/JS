@@ -11,7 +11,7 @@ let menu = document.querySelector(".menu"),
     li = document.createElement("li");
 
 li.classList.add("menu-item");
-li.innerHTML = "Fifth пункт";
+li.innerHTML = "Fifth пунктa";
 menu.appendChild(li);
 
 //                               1.2
