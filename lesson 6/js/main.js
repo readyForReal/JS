@@ -10,6 +10,7 @@ let money,
     maxSymbols = 50,
     lowDailyBudget = 10,
     highDailyBudget = 100,
+    shopLive = false,
 
 //                               String's
 
@@ -24,7 +25,7 @@ let money,
 
 //                               Inputs's
 
-    expencesItem = document.getElementsByClassName('expenses-item'),
+    expencesItem = document.querySelectorAll('.expenses-item'),
     optExpencesItem = document.querySelectorAll('.optionalexpenses-item'),
     incomeItem = document.querySelector(".choose-income"),
     sumValue = document.querySelector(".choose-sum"),
@@ -77,6 +78,17 @@ function isStr(str, err) {
     }
 }
 
+//                          Toggle Buttons function
+
+let toggleButtons = function(btn) {
+    if (btn.disabled == true) {
+        btn.disabled = false;
+        btn.style.backgroundImage = "linear-gradient(336deg, #ffbd75, #ff964b), linear-gradient(#fff, #fff)";
+    } else {
+        btn.disabled = true;
+        btn.style.backgroundImage = "linear-gradient(336deg, #c7beb5, #968b83), linear-gradient(#fff, #fff)";
+    }
+}
 
 //                          Budget and Time
 
@@ -95,6 +107,9 @@ startBtn.addEventListener('click', function() {
     yearValue.value = new Date(Date.parse(time)).getFullYear();
     monthValue.value = new Date(Date.parse(time)).getMonth() + 1;
     dayValue.value = new Date(Date.parse(time)).getDate();
+
+    shopLive = true;
+    toggleButtons(countBtn);
 });
 
 //                          Expences 
@@ -203,6 +218,26 @@ let appData = {
     savings : false
     
 };
+
+//                          Disable button's
+
+document.addEventListener('DOMContentLoaded', function(){
+    let btn = document.getElementsByTagName("BUTTON");
+    for (let i = 0; i < (btn.length - 1); i++) {
+        toggleButtons(btn[i]);
+    }
+
+    for (let i = 0; i < expencesItem.length; i++) {
+        if (expencesItem[i] != '') {
+            expencesItem[i].addEventListener('input',function() {
+                if (shopLive) {
+                    toggleButtons(expencesBtn);
+                }
+            });
+        }
+    }
+})
+
 
 
 
