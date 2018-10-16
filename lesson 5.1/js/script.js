@@ -26,7 +26,7 @@ document.querySelector(".title").innerHTML =
 //                               1.4
 
 let ad = document.querySelector(".adv");
-ad.parentNode.removeChild(ad);
+ad.parentElement.removeChild(ad);
 
 //                               1.5
 
