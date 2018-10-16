@@ -200,18 +200,7 @@ let appData = {
     expenses: {},
     optionalExpenses: {},
     income : [],
-    savings : false,
-
-    //                          Savings function
-    checkSavings : function() {
-        if (appData.savings == true) {
-            let save = +prompt(),
-                percent = +prompt(askSavingsPercent);
-    
-            appData.monthlyIncome = save/100/12*percent;
-            alert(strMonthlyDepositIncome + appData.monthlyIncome);
-        }
-    },
+    savings : false
     
 };
 
