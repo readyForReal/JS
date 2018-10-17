@@ -242,7 +242,7 @@ document.addEventListener('DOMContentLoaded', function(){
             }
         });
     }
-    let counterTwo = 0
+    let counterTwo = 0;
     for (let i = 0; i < optExpencesItem.length; i++) {
         optExpencesItem[i].addEventListener('input', function() {
             // console.log("length is " + expencesItem[i].value.length);
@@ -258,6 +258,3 @@ document.addEventListener('DOMContentLoaded', function(){
         });
     }
 });
-
-// 3) Реализовать функционал: при расчете дневного бюджета учитывать сумму обязательных трат 
-// (т. e. от бюджета на месяц отнимаем общую сумму всех обяз. трат и ее делим на 30 дней)
