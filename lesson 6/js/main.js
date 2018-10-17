@@ -107,9 +107,7 @@ startBtn.addEventListener('click', function() {
     yearValue.value = new Date(Date.parse(time)).getFullYear();
     monthValue.value = new Date(Date.parse(time)).getMonth() + 1;
     dayValue.value = new Date(Date.parse(time)).getDate();
-
     shopLive = true;
-    toggleButtons(countBtn);
 });
 
 //                          Expences 
@@ -130,6 +128,7 @@ expencesBtn.addEventListener('click', function() {
         }
     }
     expencesValue.textContent = sum;
+    toggleButtons(countBtn);
 });
 
 //                          Optional Expences
@@ -146,7 +145,7 @@ optExpencesBtn.addEventListener('click', function() {
 
 countBtn.addEventListener('click', function() {
     if (appData.budget != undefined) {
-        appData.moneyPerDay = (appData.budget / daysInMonth).toFixed();
+        appData.moneyPerDay = (appData.budget - Number(expencesValue.textContent)/* можно проще, не знаю как, .value не работает.*/) / daysInMonth.toFixed();
         dayBudgetValue.textContent = appData.moneyPerDay;
 
         if (appData.moneyPerDay <= lowDailyBudget) {
@@ -226,20 +225,39 @@ document.addEventListener('DOMContentLoaded', function(){
     for (let i = 0; i < (btn.length - 1); i++) {
         toggleButtons(btn[i]);
     }
+    // console.log(btn[0].length);
 
+    let counter = 0;
     for (let i = 0; i < expencesItem.length; i++) {
-        if (expencesItem[i] != '') {
-            expencesItem[i].addEventListener('input',function() {
-                if (shopLive) {
-                    toggleButtons(expencesBtn);
+        expencesItem[i].addEventListener('input', function() {
+            // console.log("length is " + expencesItem[i].value.length);
+            if (expencesItem[i].value != '' && expencesItem[i].value.length > 0 && 
+                expencesItem[i].value.length < 2 && shopLive) {
+                counter++;
+                // console.log('counter is ' + counter);
+                if (counter == expencesItem.length) {
+                    expencesBtn.disabled = false;
+                    expencesBtn.style.backgroundImage = "linear-gradient(336deg, #ffbd75, #ff964b), linear-gradient(#fff, #fff)";
                 }
-            });
-        }
+            }
+        });
     }
-})
+    let counterTwo = 0
+    for (let i = 0; i < optExpencesItem.length; i++) {
+        optExpencesItem[i].addEventListener('input', function() {
+            // console.log("length is " + expencesItem[i].value.length);
+            if (optExpencesItem[i].value != '' && optExpencesItem[i].value.length > 0 && 
+                optExpencesItem[i].value.length < 2 && shopLive) {
+                counterTwo++;
+                // console.log('counter is ' + counter);
+                if (counterTwo == optExpencesItem.length) {
+                    optExpencesBtn.disabled = false;
+                    optExpencesBtn.style.backgroundImage = "linear-gradient(336deg, #ffbd75, #ff964b), linear-gradient(#fff, #fff)";
+                }
+            }
+        });
+    }
+});
 
-
-
-
-
-
+// 3) Реализовать функционал: при расчете дневного бюджета учитывать сумму обязательных трат 
+// (т. e. от бюджета на месяц отнимаем общую сумму всех обяз. трат и ее делим на 30 дней)
